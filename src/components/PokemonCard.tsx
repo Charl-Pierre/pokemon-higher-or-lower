@@ -12,6 +12,15 @@ type PokemonCardType = {
 
 export default function PokemonCard({ data, answerCallback, index, roundState, hidden } : PokemonCardType){
     
+    var statColors = {
+        'hp': 'rgb(255,0,0)',
+        'attack': 'rgb(240,128,48)',
+        'defense': 'rgb(248,208,48)',
+        'special-attack': 'rgb(104,144,240)',
+        'special-defense': 'rgb(120,200,80)',
+        'speed': 'rgb(248,88,136)'
+    }
+
     return (
         <div
             className={'pack-term ' /*+ (hidden ? "hidden" : "")*/}
@@ -27,7 +36,14 @@ export default function PokemonCard({ data, answerCallback, index, roundState, h
                     className="h-64"
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id.toString()}.png`}
                     alt={data.name} />
-                has a {data.stats?.[data.display_stat].stat.name.split('-').map(CapitaliseFirst).join(' ')} that is
+                <div>
+                    has a
+                    <b><span 
+                        style={{color: (statColors as any)[data.stats[data.display_stat].stat.name]}} 
+                        className={"inline mx-1.5"}>{data.stats?.[data.display_stat].stat.name.split('-').map(CapitaliseFirst).join(' ')}
+                    </span></b> 
+                    that is
+                </div>
 
 
                 {index === 0 && 
