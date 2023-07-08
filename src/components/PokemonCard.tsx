@@ -22,32 +22,37 @@ export default function PokemonCard({ data, answerCallback, index, roundState, h
             }}
         >
             <div className="pack-term__wrapper">
-                <p className="text-7xl">{`(${data.national_id}) ${CapitaliseFirst(data.name)}`}</p>
+                <p className="text-4xl">{`${CapitaliseFirst(data.name)} (${data.national_id})`}</p>
                 <img
                     className="h-64"
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id.toString()}.png`}
                     alt={data.name} />
+                has a {data.stats?.[data.display_stat].stat.name.split('-').map(CapitaliseFirst).join(' ')} that is
+
 
                 {index === 0 && 
                     <>
-                        has a {CapitaliseFirst(data.stats?.[data.display_stat].stat.name)} stat of<br/>
-                        {data.stats?.[data.display_stat].base_stat}
+                        <div className="text-yellow-300 text-4xl">{data.stats?.[data.display_stat].base_stat}</div>
                     </>
                 }
 
-                {index === 1 && 
+                {index > 0 && 
                     <>
-                        has a {CapitaliseFirst(data.stats?.[data.display_stat].stat.name)} that is...
-                        { answerCallback && roundState === 'new' &&
+                        { (answerCallback && (roundState === 'new' || index === 2)) &&
                             <>
-                                <button onClick={() => answerCallback(true)}>Higher</button>
-                                <button onClick={() => answerCallback(false)}>Lower</button>
+                                {['Higher', 'Lower'].map((value, index) => {
+                                    return <button 
+                                        key={value}
+                                        onClick={() => answerCallback(!index)}
+                                        className="text-lg border-white border-2 rounded-lg w-36 my-1 hover:bg-white hover:text-black"
+                                    >{value}</button>
+                                })}                               
                             </> 
                         }
-                        { roundState === 'win' &&
+                        { index === 1 && (roundState === 'win' || roundState === 'lose') &&
                             <>
                                 <Motion defaultStyle={{ x: 0 }} style={{ x: spring(data.stats?.[data.display_stat].base_stat, { ...presets.stiff, damping: 25, precision: 0.1 }) }}>
-                                    {value => <div>{Math.min(value.x + 1, data.stats?.[data.display_stat].base_stat).toString().split('.')[0]}</div>}
+                                    {value => <div className="text-yellow-300 text-4xl">{Math.min(value.x + 1, data.stats?.[data.display_stat].base_stat).toString().split('.')[0]}</div>}
                                 </Motion>
                             </>
                         }

@@ -16,7 +16,6 @@ export async function getRandomPokemon() {
 
   var species = await wrapper.get(form.data.species.url)
   form.data.national_id = species.data.id
-  console.log(form.data)
   return form.data
 }
 

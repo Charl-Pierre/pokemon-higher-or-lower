@@ -2,7 +2,7 @@ import React from 'react';
 import { Game } from './components/Game';
 import './index.css';
 
-function App() {
+function App() { 
   return (
     <div className="game-container">
       <Game/>
