@@ -27,6 +27,7 @@ export const Game = ({ state } : any) => {
 
     const [roundState, setRoundState] = useState('new')
     const [mons, setMons] = useState<PokemonType[]>([])
+    const [score, setScore] = useState(0)
 
     useEffect(() => {
         for(let i = 0; i < 3; i++){
@@ -57,6 +58,7 @@ export const Game = ({ state } : any) => {
     const incrementScore = () => {
         setRoundState('win')
         runAfterCssAnimationComplete(1800, () =>{
+            setScore(prev => prev + 1)
             getRandomPokemon().then((data) => {
                 data.display_stat = RandomInteger(0, 6)
                 setMons((prevMons) => {
@@ -79,12 +81,13 @@ export const Game = ({ state } : any) => {
 
     return (
       <span className="game h-full">
+            Score: {score}
             <div className={'game-scroller game-scroller--' + roundState}>
                 {(mons.length === 3 && roundState !== 'processing') && <>
-                    <PokemonCard data={mons[0]} index={0} roundState={roundState}/>
-                    <PokemonCard data={mons[1]} index={1} roundState={roundState} answerCallback={inputAnswer}/>
-                    <PokemonCard data={mons[2]} index={2} roundState={roundState} hidden={roundState === 'new'}/>
-                </>}  
+                    <PokemonCard data={mons[0]} index={0} roundState={roundState} />
+                    <PokemonCard data={mons[1]} index={1} roundState={roundState} answerCallback={inputAnswer} />
+                    <PokemonCard data={mons[2]} index={2} roundState={roundState} hidden={roundState === 'new'} />
+                </>}
             </div>
 
         </span>
