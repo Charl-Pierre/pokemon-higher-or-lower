@@ -27,7 +27,7 @@ export default function PokemonCard({ data, answerCallback, index, roundState, h
             style={{
                 backgroundImage:
                     "linear-gradient(rgba(100, 100, 100, 0.45), rgba(5, 5, 5, 0.45)), " +
-                    `url('../../images/backgrounds/${data.types[0].type.name}.png')`
+                    `url('${process.env.PUBLIC_URL}/images/backgrounds/${data.types[0].type.name}.png')`
             }}
         >
             <div className="pack-term__wrapper">

@@ -34,12 +34,12 @@ export const Game = ({ state } : any) => {
     }, [])
 
     function initialize() {
+        console.log(process.env.PUBLIC_URL)
         setRoundState('processing')
         setScore(0)
         setMons([])
         for(let i = 0; i < 3; i++){
             getRandomPokemon().then((data) => {
-                console.log('3')
                 data.display_stat = RandomInteger(0, 6)
                 setMons((prevMons) => {
                     if (prevMons.length < 3){
@@ -124,7 +124,7 @@ export const Game = ({ state } : any) => {
                     style={{
                         backgroundImage:
                         "linear-gradient(rgba(100, 100, 100, 0.45), rgba(5, 5, 5, 0.8)), " +
-                        `url('../../images/backgrounds/${mons[2].types[0].type.name}.png')`
+                        `url('${process.env.PUBLIC_URL}/images/backgrounds/${mons[2].types[0].type.name}.png')`
                 }}>
                     <div className={"relative top-1/4"}>
                         <img
