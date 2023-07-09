@@ -82,7 +82,7 @@ export const Game = () => {
                 })
                 setRoundState('new')
             })           
-        }, 1800)
+        }, 1200)
     }
 
     /**
@@ -138,7 +138,7 @@ export const Game = () => {
                         {(mons.length === 3 && roundState !== 'processing') && <>
                             <PokemonCard data={mons[0]} index={0} roundState={roundState} />
                             <PokemonCard data={mons[1]} index={1} roundState={roundState} answerCallback={inputAnswer} />
-                            <PokemonCard data={mons[2]} index={2} roundState={roundState} answerCallback={inputAnswer} hidden={roundState === 'new'} />
+                            <PokemonCard data={mons[2]} index={2} roundState={roundState} answerCallback={inputAnswer} />
                         </>}
                     </div>
                 </>               
@@ -155,7 +155,7 @@ export const Game = () => {
                 }}>
                     <div className={"relative top-1/4"}>
                         <img
-                            className="h-72 pb-10"
+                            className={"h-1/3"}
                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${mons[2].id.toString()}.png`}
                             alt={mons[2].name} />
                         You did your best.<br/>

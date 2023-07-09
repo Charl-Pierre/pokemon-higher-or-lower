@@ -4,7 +4,6 @@ import { Motion, spring, presets } from 'react-motion';
 
 type PokemonCardType = {
     data: PokemonType
-    hidden? : boolean
     index: number
     roundState: string
     answerCallback? : (isHigher: boolean) => void
@@ -16,9 +15,8 @@ type PokemonCardType = {
  * @param {function} answerCallback - Callback function to be used when an answer is submitted.
  * @param {number} index - This card's index within the list of cards.
  * @param {string} roundState - Current state of the round.
- * @param {boolean} hidden - Whether the current card should be invisible.
  */
-export default function PokemonCard({ data, answerCallback, index, roundState, hidden } : PokemonCardType){
+export default function PokemonCard({ data, answerCallback, index, roundState} : PokemonCardType){
 
     // CSS RGB values associated with the different stats
     var statColors = {
@@ -40,9 +38,9 @@ export default function PokemonCard({ data, answerCallback, index, roundState, h
             }}
         >
             <div className="pack-term__wrapper">
-                <p className="text-4xl">{`${CapitaliseFirst(data.name)} (${data.national_id})`}</p>
+                <p className={"text-3xl"}>{`${CapitaliseFirst(data.name)} (${data.national_id})`}</p>
                 <img
-                    className="h-64"
+                    className="h-1/3"
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id.toString()}.png`}
                     alt={data.name} />
                 <div>

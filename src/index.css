@@ -52,10 +52,10 @@ code {
 
 @keyframes scoreAnim {
 	0% {
-		transform: translateX(0);
+		transform: scale(1.0) translateX(0) translateY(0) ;
 	}
 	100% {
-		transform: translateX(50vw) translateY(50vh);
+		transform: translateY(18vh) scale(1.5) translateX(50vw);
 	}
 }
 
@@ -93,7 +93,7 @@ code {
                   background-size: cover;
                   background-position: center center; }
                   .pack-term:nth-child(2) .pack-term__wrapper {
-                    height: 70%; }
+                    height: 100%; }
                     @media screen and (orientation: landscape) {
                       .pack-term:nth-child(2) .pack-term__wrapper {
                         height: 100%; } }
