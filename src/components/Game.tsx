@@ -82,6 +82,8 @@ export const Game = () => {
                     return (newMons)
                 })
                 setRoundState('new')
+            }).catch((error) => {
+                console.log(error)
             })           
         }, 1200)
     }
