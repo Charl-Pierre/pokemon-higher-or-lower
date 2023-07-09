@@ -18,7 +18,8 @@ export const Game = () => {
 
     // State to track current and highest score
     const [score, setScore] = useState(0)
-    const highscore = getCookie('highscore')
+    var highscore = getCookie('highscore')
+    if (highscore === "") highscore = '0'
 
     // Initialization
     useEffect(() => {
@@ -94,7 +95,11 @@ export const Game = () => {
         // Wait for animations to finish before switching to the gameover screen
         setTimeout(() =>{
             setRoundState('gameover')   
-            if (parseInt(highscore, 10) < score) setCookie('highscore', score.toString());  
+
+            // Update highscore if necessary
+            if (parseInt(highscore, 10) < score) {
+                setCookie('highscore', score.toString()); 
+            } 
         }, 1400)
     }
 
