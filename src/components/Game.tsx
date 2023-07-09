@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { PokemonType } from "../utils/Api";
 import PokemonCard from "./PokemonCard";
 import { getRandomPokemon } from "../utils/Api";
-import { RandomInteger } from "../utils/Utils";
+import { RandomInteger, setCookie, getCookie} from "../utils/Utils";
 import '../index.css';
 
 /**
@@ -16,8 +16,9 @@ export const Game = () => {
     // State that stores the current three Pokemon (2 visible, 1 in queue)
     const [mons, setMons] = useState<PokemonType[]>([])
 
-    // State to track current score
+    // State to track current and highest score
     const [score, setScore] = useState(0)
+    const highscore = getCookie('highscore')
 
     // Initialization
     useEffect(() => {
@@ -92,7 +93,8 @@ export const Game = () => {
 
         // Wait for animations to finish before switching to the gameover screen
         setTimeout(() =>{
-            setRoundState('gameover')      
+            setRoundState('gameover')   
+            if (parseInt(highscore, 10) < score) setCookie('highscore', score.toString());  
         }, 1400)
     }
 
@@ -121,12 +123,13 @@ export const Game = () => {
     }
 
     return (
-        <span className="game h-full">
+        <span className="game h-full w-full">
             <div style={roundState === 'gameover' ? {animation: 'scoreAnim 1s ease 0s 1 normal forwards'} : {}}>
-                <p 
-                    className={"float-right pr-5 fixed z-10 text-2xl m-3 drop-shadow-lg" + (roundState === 'gameover' ? " -translate-x-1/2" : "")} 
+                <p className={"float-left pr-5 fixed z-10 text-2xl m-3 drop-shadow-lg" + (roundState === 'gameover' ? " -translate-x-1/2" : "")} 
                 >Score: {score}</p>
             </div>
+            <p className={"float-left bottom-0 pr-5 fixed z-10 text-2xl m-3 drop-shadow-lg"} 
+                >Highscore: {highscore}</p>
             
             {/* Main game screen */}
             { roundState !== 'gameover' &&

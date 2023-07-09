@@ -2,6 +2,8 @@
 
 A Pokémon stat guessing game inspired by [The Higher or Lower Game](http://www.higherlowergame.com) built in the React framework.
 
+Uses the [PokeAPI](https://pokeapi.co) to obtain Pokémon data.
+
 ## Installation
 
 The project can be installed using npm:
@@ -18,21 +20,21 @@ Install dependencies
 
 ## Usage
 
-Run the web application
+### Run the web application
 ```bash
   npm start
 ```
 This runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Run tests
+### Run tests
 ```bash
   npm test
 ```
 
 ## Recommended extensions (VS Code)
 
-| Extension        | Extension marketplace           |
+| Extension        | Extension marketplace |
 | ------------- |:-------------:|
 | Tailwind CSS IntelliSense     | https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss |
 
