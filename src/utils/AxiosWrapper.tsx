@@ -27,6 +27,7 @@ export default class AxiosWrapper {
       'Accept': "application/json",
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
+      'Vary': 'Origin',
       'Content-Type': contentType
     };
 
