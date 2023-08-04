@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pokemon-higher-or-lower/static/css/main.61830d45.css",
-    "main.js": "/pokemon-higher-or-lower/static/js/main.a06369c4.js",
+    "main.css": "/pokemon-higher-or-lower/static/css/main.7b3c75f5.css",
+    "main.js": "/pokemon-higher-or-lower/static/js/main.eff27c59.js",
     "static/js/787.b916d5cc.chunk.js": "/pokemon-higher-or-lower/static/js/787.b916d5cc.chunk.js",
     "index.html": "/pokemon-higher-or-lower/index.html",
-    "main.61830d45.css.map": "/pokemon-higher-or-lower/static/css/main.61830d45.css.map",
-    "main.a06369c4.js.map": "/pokemon-higher-or-lower/static/js/main.a06369c4.js.map",
+    "main.7b3c75f5.css.map": "/pokemon-higher-or-lower/static/css/main.7b3c75f5.css.map",
+    "main.eff27c59.js.map": "/pokemon-higher-or-lower/static/js/main.eff27c59.js.map",
     "787.b916d5cc.chunk.js.map": "/pokemon-higher-or-lower/static/js/787.b916d5cc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.61830d45.css",
-    "static/js/main.a06369c4.js"
+    "static/css/main.7b3c75f5.css",
+    "static/js/main.eff27c59.js"
   ]
 }
